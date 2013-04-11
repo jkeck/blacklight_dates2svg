@@ -1,0 +1,9 @@
+<div class="legend">
+  <span>Less</span>
+  <ul>
+    <%- @date_selector.color_range.each do |range, color| -%>
+      <li title="<%= render_date_range_value(range) %>" style="background-color: <%= color %>"></li>
+    <%- end -%>
+  </ul>
+  <span>More</span>
+</div>

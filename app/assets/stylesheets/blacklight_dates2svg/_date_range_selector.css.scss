@@ -1,0 +1,45 @@
+.date-range-selector {
+	rect {
+		&:hover {
+			stroke: #555;
+		  stroke-width: 1px;
+		  cursor: pointer;
+		}
+		&[data-selected='true']{
+		  stroke: black;
+		  stroke-width: 1px;
+		}
+	}
+	text{
+	  font-size: 12px;
+	}
+	.form-controls {
+		height: 50px;
+		max-width: 463px;
+  	form {
+			float: left;
+			margin-left: 32px;
+		  input {
+			  &.begin-date, &.end-date {width: 55px}	
+			  &.btn {margin-top: -10px;}
+		  }
+		}		
+		.legend {
+			margin-top: 5px;
+	  	float: right;
+		  font-size: 12px;
+		  span {float: left;}
+		  ul {
+			  float: left;
+			  margin: 2px 5px;
+			  li {
+				  list-style-type: none;
+				  margin-left: 1px;
+				  width: 15px;
+				  height: 15px;
+				  float: left;
+			  }
+		  }
+	  }
+	}	
+}
