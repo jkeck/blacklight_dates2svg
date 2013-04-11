@@ -1,3 +1,0 @@
-= BlacklightDates2svg
-
-This project rocks and uses MIT-LICENSE.
