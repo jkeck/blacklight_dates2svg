@@ -23,24 +23,18 @@ module BlacklightDates2SVG
   end
 
   def render_date_range_selector_grid(options)
-    response ||= (options[:response] || @response)
-    if @response
-      fs = @response.facets.select do |f|
-        f.name == blacklight_config.search_date_field
-      end.first
-      unless fs.blank?
-        @date_selector = Dates2SVG.new(fs.items, options)
-        render(:partial => "blacklight_dates2svg/date_range_selector").join(" ").html_safe
-      end
+    items = (options[:dates] || @response.facets.select do |facet|
+                                  facet.name == blacklight_config.search_date_field
+                                end.first.items)
+    options.delete(:dates)
+    unless items.blank?
+      @date_selector = Dates2SVG.new(items, options)
+      render(:partial => "blacklight_dates2svg/date_range_selector").join(" ").html_safe
     end
   end
   
   def render_date_range_value(range)
-    if range.is_a? Array
-      return range.first
-    else range.is_a? Range
-      return "#{range.first} - #{range.last}"
-    end
+    [range.first, range.last].uniq.join(" - ")
   end
   
   def date_range_form_omit_keys
