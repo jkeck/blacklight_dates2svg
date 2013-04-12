@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.10"
-  s.add_dependency "blacklight", "~> 4.0.0"
+  s.add_dependency "rails", "~> 3.1"
+  s.add_dependency "blacklight", "~> 4.0"
   s.add_dependency "dates2svg"
   s.add_dependency "date_range_solr_query"
 
