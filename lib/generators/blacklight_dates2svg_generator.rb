@@ -10,7 +10,7 @@ class BlacklightDates2svgGenerator < Rails::Generators::Base
          """ 
 
     # insert require statements into application level CSS/JS manifestes.
-    def inject_blacklight_browse_nearby_require
+    def inject_blacklight_dates2svg_assets
       css = "app/assets/stylesheets/application.css"
       if File.exists?("app/assets/stylesheets/application.css.scss")
         css = "app/assets/stylesheets/application.css.scss"
@@ -27,6 +27,7 @@ class BlacklightDates2svgGenerator < Rails::Generators::Base
         insert_into_file "app/assets/javascripts/application.js", :before => "//= require_tree ." do
 %q{// Required by BlacklightDates2SVG:
 //= require blacklight_dates2svg/svgMonthGridSelector
+//= require blacklight_dates2svg/blacklight_dates2svg
 }
         end
       end
