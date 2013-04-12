@@ -59,6 +59,18 @@ This gem adds an additional :dates option that when passed will ignore the facet
              OpenStruct.new(:value => "2012-02-21", :hits => 584)]
     
     svg = render_date_range_selector_grid(:dates => dates)
+    
+## Customizing
+
+There are 4 partials that can be overridden at the application level to customize some markup.
+
+1. [app/views/blacklight_dates2svg/_date_range_selector](https://github.com/jkeck/blacklight_dates2svg/blob/master/app/views/blacklight_dates2svg/_date_range_selector.html.erb) (The main layout) 
+2. [app/views/blacklight_dates2svg/_date_range_grid](https://github.com/jkeck/blacklight_dates2svg/blob/master/app/views/blacklight_dates2svg/_date_range_grid.html.erb) (The SVG grid)
+3. [app/views/blacklight_dates2svg/_date_range_form](https://github.com/jkeck/blacklight_dates2svg/blob/master/app/views/blacklight_dates2svg/_date_range_form.html.erb) (The form elements and the rendering of the legend partial)
+4. [app/views/blacklight_dates2svg/_legend](https://github.com/jkeck/blacklight_dates2svg/blob/master/app/views/blacklight_dates2svg/_legend.html.erb) (The legend)
+
+
+The [svgMonthGridSelector](https://github.com/jkeck/svgMonthGridSelector) jQuery plugin has some defaults that we adhere to.  If you customize the form you may want to instantiate the plugin on your own and pass the necessary options to customize the behavior of the jQuery plugin.
 
 ## Contributing
 
