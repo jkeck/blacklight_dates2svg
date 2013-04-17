@@ -22,7 +22,7 @@ module BlacklightDates2SVG
     end
   end
 
-  def render_date_range_selector_grid(options)
+  def render_date_range_selector_grid(options={})
     items = (options[:dates] || @response.facets.select do |facet|
                                   facet.name == blacklight_config.search_date_field
                                 end.first.items)
