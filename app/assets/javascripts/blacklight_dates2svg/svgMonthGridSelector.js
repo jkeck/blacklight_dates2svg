@@ -21,10 +21,10 @@
     var begin_input = $("form input" + settings.begin_input, selector);
 		var end_input = $("form input" + settings.end_input, selector);
 		var hits_element = $(settings.hits, selector);
-		
+
 		updateRangesFromInputs();
 		updateRangeOnFormChange();
-		
+
 		$("rect", svg).each(function(){
 			$(this).click(function(){
 				// clear selected months
@@ -41,7 +41,11 @@
 				updateDateSelectorFormControls();
 			});
 		});
-		
+
+		function inputHasValue(input) {
+			return (input != "" && input !== undefined);
+		}
+
 		function selectRange(){
 		  if($("rect[data-selected='true']", svg).length > 1){
 	      var in_range = false;
@@ -99,7 +103,7 @@
 	  function updateRangeOnFormChange(){
 		  $.each([begin_input, end_input], function(){
 			  $(this).change(function(){
-				  if($(this).attr("value") != "" &&
+				  if(inputHasValue($(this).attr("value")) &&
 				       begin_input.attr("value").match(/^\d{4}-\d{2}/) &&
 							 end_input.attr("value").match(/^\d{4}-\d{2}/)){
 				    $("rect", svg).each(function(){
@@ -113,14 +117,14 @@
 
 	  function updateRangesFromInputs(){
 		  var begin_grid_element, end_grid_element;
-			if(begin_input.length > 0 && begin_input.attr("value") != "") {
+			if(begin_input.length > 0 && inputHasValue(begin_input.attr("value"))) {
 				var match = begin_input.attr("value").match(/^(\d{4})-(\d{2})/)
 				var year = match[1]
 				var month = match[2]
 				begin_grid_element = $("rect[data-year='" + year + "'][data-month='" + month +"']", svg);
 				begin_grid_element.attr("data-selected", "true");
 			}
-			if(end_input.length > 0 && end_input.attr("value") != "") {
+			if(end_input.length > 0 && inputHasValue(end_input.attr("value"))) {
 				var match = end_input.attr("value").match(/^(\d{4})-(\d{2})/)
 				var year = match[1]
 				var month = match[2]
@@ -130,6 +134,6 @@
 			selectRange();
 			updateDateSelectorFormControls();
 	  }
-		
+
 	}
 })( jQuery );
